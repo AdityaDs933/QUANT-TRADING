@@ -1,0 +1,25 @@
+# Core Numerical & Data Processing
+numpy>=1.24.0
+pandas>=2.0.0
+scipy>=1.10.0
+
+# Configuration & Utilities
+pyyaml>=6.0
+python-dateutil>=2.8.2
+
+# Financial Market Data
+yfinance>=0.2.36
+
+# Machine Learning & Statistics
+scikit-learn>=1.3.0
+statsmodels>=0.14.0
+xgboost>=2.0.0
+hmmlearn>=0.3.0
+shap>=0.44.0
+
+# Visualization & Reporting
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Testing & Code Quality
+pytest>=7.4.0

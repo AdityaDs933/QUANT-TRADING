@@ -1,0 +1,63 @@
+project:
+  name: "Quantitative Trading System Using Machine Learning"
+  version: "1.0.0"
+  random_seed: 42
+
+assets:
+  equities:
+    - "AAPL"
+    - "MSFT"
+    - "NVDA"
+  benchmarks:
+    - "SPY"
+    - "QQQ"
+  primary_asset: "AAPL"
+  benchmark_asset: "SPY"
+
+data:
+  start_date: "2018-01-01"
+  end_date: "2024-12-31"
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  use_cache: true
+
+synthetic:
+  gbm:
+    s0: 100.0
+    mu: 0.08
+    sigma: 0.20
+    n_days: 1512
+    dt: 0.00396825  # 1/252
+  merton:
+    lambda_j: 0.1   # Jumps per year
+    mu_j: -0.05     # Mean jump size
+    sigma_j: 0.10   # Volatility of jump size
+
+features:
+  rolling_windows:
+    short: 10
+    medium: 20
+    long: 50
+    macro: 200
+  momentum:
+    rsi_period: 14
+    macd_fast: 12
+    macd_slow: 26
+    macd_signal: 9
+  volatility:
+    bb_period: 20
+    bb_std: 2.0
+    atr_period: 14
+
+validation:
+  test_size: 0.20
+  n_splits: 5
+  purge_window: 5
+  embargo_window: 5
+
+backtest:
+  initial_capital: 100000.0
+  commission_bps: 10.0      # 10 basis points (0.10%)
+  slippage_bps: 5.0         # 5 basis points (0.05%)
+  execution_lag: 1          # Signal at t executed at t+1 open
+  risk_free_rate: 0.04      # 4% annual risk-free rate
